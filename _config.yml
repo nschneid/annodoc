@@ -16,10 +16,10 @@ markdown_ext: md
 # Site settings
 
 name: Annodoc
-baseurl: "/annodoc"
-homeurl: "https://github.com/nschneid/annodoc/"
-editurl: "https://github.com/nschneid/annodoc/edit/gh-pages"
-issueurl: "https://github.com/nschneid/annodoc/issues"
+baseurl: "/ccg-cxns"
+homeurl: "https://github.com/nschneid/ccg-cxns/"
+editurl: "https://github.com/nschneid/ccg-cxns/edit/gh-pages"
+issueurl: "https://github.com/nschneid/ccg-cxns/issues"
 
 ##############################################################################
 
