@@ -3,7 +3,6 @@ layout: entry
 title: Annodoc annotation documentation support system
 ---
 
-Hello.
 
 This is a page of documentation created using the Annodoc
 system. It serves a double purpose as *documentation* for the Annodoc
