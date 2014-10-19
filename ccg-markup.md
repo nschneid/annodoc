@@ -116,7 +116,7 @@ There is also arrow notation for type-raised categories: `NP^` renders as NP↑.
 
 We have not worked out a system for notating diamond operators or other bells and whistles used in certain varieties of CCG.
 
-## Reserved Symbols
+## Reserved symbols
 
 These characters have special meanings in the notation and are therefore restricted in how they may be used.
 
