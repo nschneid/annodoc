@@ -45,9 +45,9 @@ The first line is the __sentence__. We assume there are no repeated words (repea
 
 Lexical entries and rules begin with an __identifier__, which must match one or more tokens in the sentence (the yield of the derivation). Each identifier corresponds to a CCG "constituent", i.e., word or grouping of words with syntactic status in the analysis.
 
-(Identifier names are not required to contain contiguous words or to order them in the same way as the sentence, but they must be consistent: e.g., <tt>the dog</tt> and <tt>dog the</tt> cannot both be used as identifiers in the same derivation.)
+(Identifier names are not required to contain contiguous words or to order them in the same way as the sentence, but they must be consistent: e.g., `the dog` and `dog the` cannot both be used as identifiers in the same derivation.)
 
-Syntactic information follows the identifier, separated by a spaced colon (<tt> : </tt>). For lexical entries, the only syntactic information is the category. The syntactic part of rules consists of identifiers, combinators, and the resulting catergory. Combinators are marked inline, between identifiers of the constituents being combined. The resulting category is preceded by the spaced <tt>=&gt;</tt> operator.
+Syntactic information follows the identifier, separated by a spaced colon (` : `). For lexical entries, the only syntactic information is the category. The syntactic part of rules consists of identifiers, combinators, and the resulting catergory. Combinators are marked inline, between identifiers of the constituents being combined. The resulting category is preceded by the spaced `=>` operator.
 
 For unary rules that are not lexical entries, the syntactic part of the rule omits constituent identifiers (because the constituent is clear from the first part of the rule). Where multiple rules apply to the same constituent (e.g., _the dog_ in the example), they are given in order on successive lines: the consituent identifier only appears on the first of these lines, but the colon is repeated on each line. Otherwise, there are no requirements for the ordering of lines.
 
@@ -71,7 +71,7 @@ The difference is that instead of repeating the words of the sentence in the syn
 
 ### With semantics
 
-Following lexical entries and rules with an additional spaced colon makes room for semantics. Note that the notation offers ASCII shorthand for special symbols, including <tt>!</tt> for λ, <tt>&amp;&amp;</tt> for ∧, and <tt>%</tt> for ∃.
+Following lexical entries and rules with an additional spaced colon makes room for semantics. Note that the notation offers ASCII shorthand for special symbols, including `!` for λ, `&&` for ∧, and `%` for ∃.
 
     the dog bit John
 
@@ -105,7 +105,7 @@ Heads and features (to be displayed as subscripts) can be indicated in categorie
     VP/NP[case=acc number=sg]
     VP/NP[book +acc]
 
-There is also arrow notation for type-raised categories: <tt>NP^</tt> renders as NP↑.
+There is also arrow notation for type-raised categories: `NP^` renders as NP↑.
 
 We have not worked out a system for notating diamond operators or other bells and whistles used in certain varieties of CCG.
 
@@ -132,10 +132,10 @@ The ASCII symbols will simply be replaced by Unicode equivalents in processing t
 
 ### Other reserved symbols
 
-* Reserved for use in category names: <tt>/ \ | ( ) [ ] { }</tt> (categories may contain spaces; unmatched brackets trigger a warning)
+* Reserved for use in category names: `/ \ | ( ) [ ] { }` (categories may contain spaces; unmatched brackets trigger a warning)
 
-* Reserved for use in combinators: <tt>&lt; &gt;</tt> (exception: the <tt>=&gt;</tt> operator)
+* Reserved for use in combinators: `< >` (exception: the `=>` operator)
 
-* Reserved for delimiter in statements: <tt>:</tt>
+* Reserved for delimiter in statements: `:`
 
-* Starts an HTML entity (for escaping special characters): <tt>&amp;</tt> (exception: <tt>&amp;&amp;</tt> operator and <tt>&lt;&amp;&gt;</tt> combinator)
+* Starts an HTML entity (for escaping special characters): `&` (exception: `&&` operator and `<&>` combinator)
