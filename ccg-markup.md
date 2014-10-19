@@ -3,9 +3,16 @@ layout: entry
 title: CCG Markup
 ---
 
-# CCG Markup
-
 *Nathan Schneider &amp; Reut Tsarfaty<br/>17 Oct 2014*
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Example](#example)
+* [Special notation in categories](#special-notation-in-categories)
+* [Reserved symbols](#reserved-symbols)
+
+## Introduction
 
 This document proposes a mini-language for notating CCG derivations in plain text. 
 A rendering engine will automatically convert ASCII or Unicode text in this notation to HTML.
