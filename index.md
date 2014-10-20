@@ -17,3 +17,4 @@ WORK IN PROGRESS.
 ## Readings
 
 * Steedman 1996, [A Very Short Introduction to CCG](http://www.inf.ed.ac.uk/teaching/courses/nlg/readings/ccgintro.pdf)
+* Steedman & Baldridge 2005, [Combinatory Categorial Grammar](ftp://ftp.cogsci.ed.ac.uk/pub/steedman/ccg/SteedmanBaldridgeNTSyntax.pdf). In R. Borsley and K. Borjars (eds.), _Non-Transformational Syntax_.
