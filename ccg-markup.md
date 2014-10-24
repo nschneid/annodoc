@@ -48,15 +48,53 @@ First, a simple derivation without semantics:
     the dog bit      :    the dog B> bit   => S/NP
     the dog bit John : the dog bit > John  => S
 
-The first line is the __sentence__. We assume there are no repeated words (repeated words in the original sentence can be disambiguated as preprocessing). The next four lines indicate __lexical entries__. The last four lines are the __rules__ applied in the derivation.
+The first line is the __sentence__. The next four lines indicate __lexical entries__. The last four lines are the __rules__ applied in the derivation.
 
-Lexical entries and rules begin with an __identifier__, which must match one or more tokens in the sentence (the yield of the derivation). Each identifier corresponds to a CCG "constituent", i.e., word or grouping of words with syntactic status in the analysis.
+Lexical entries and rules begin with an __identifier__, which must match one or more tokens in the sentence (the yield of the derivation). Each identifier corresponds to a CCG "constituent", i.e., span of one or more words with syntactic status in the analysis.
 
 (Identifier names are not required to contain contiguous words or to order them in the same way as the sentence, but they must be consistent: e.g., `the dog` and `dog the` cannot both be used as identifiers in the same derivation.)
 
 Syntactic information follows the identifier, separated by a spaced colon (` : `). For lexical entries, the only syntactic information is the category. The syntactic part of rules consists of identifiers, combinators, and the resulting catergory. Combinators are marked inline, between identifiers of the constituents being combined. The resulting category is preceded by the spaced `=>` operator.
 
 For unary rules that are not lexical entries, the syntactic part of the rule omits constituent identifiers (because the constituent is clear from the first part of the rule). Where multiple rules apply to the same constituent (e.g., _the dog_ in the example), they are given in order on successive lines: the consituent identifier only appears on the first of these lines, but the colon is repeated on each line. Otherwise, there are no requirements for the ordering of lines.
+
+### Multiple occurrences of the same word or phrase
+
+Because constituents are identified simply by their component words, 
+if the sentence contains repeated words, there needs to be a way to tell 
+which of them is being referred to in a particular derivation step. 
+This is determined by aligning the order of the derivation steps to the sentence order: 
+where a constituent definition has multiple possible matches in the sentence, 
+it is taken to refer to the earliest (leftmost, in LTR scripts) match that is not already  
+encompassed by a constituent. 
+Binary derivation steps require their component constituents to be adjacent, 
+thus eliminating ambiguity once the resulting constituent's span is identified.
+
+For example (leaving out the categories):
+
+    the big dog smelled the other big dog
+    
+    the : .
+    big : .
+    dog : . 
+    smelled : .
+    the : .
+    other : .
+    big : .
+    dog : .
+    
+    big dog : .
+    big dog : .
+    the big dog : the > big dog => .
+    the other big dog : the other > big dog => .
+
+If the annotator wishes to leave an earlier occurrence 
+of a word or phrase unanalyzed, the double colon operator `::` can be used in the earlier occurrence:
+
+    that ice cream doesn't smell like ice cream
+    
+    ice cream ::
+    ice cream : N
 
 ### Alternative 2
 
