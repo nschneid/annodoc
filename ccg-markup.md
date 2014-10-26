@@ -60,15 +60,7 @@ For unary rules that are not lexical entries, the syntactic part of the rule omi
 
 ### Multiple occurrences of the same word or phrase
 
-Because constituents are identified simply by their component words, 
-if the sentence contains repeated words, there needs to be a way to tell 
-which of them is being referred to in a particular derivation step. 
-This is determined by aligning the order of the derivation steps to the sentence order: 
-where a constituent definition has multiple possible matches in the sentence, 
-it is taken to refer to the earliest (leftmost, in LTR scripts) match that is not already  
-encompassed by a constituent. 
-Binary derivation steps require their component constituents to be adjacent, 
-thus eliminating ambiguity once the resulting constituent's span is identified.
+Because constituents are identified simply by their component words, if the sentence contains repeated words, there needs to be a way to tell which of them is being referred to in a particular derivation step. This is determined by aligning the order of the derivation steps to the sentence order: where a constituent definition has multiple possible matches in the sentence, it is taken to refer to the earliest (leftmost, in LTR scripts) match that is not already encompassed by a constituent. Binary derivation steps require their component constituents to be adjacent, thus eliminating ambiguity once the resulting constituent's span is identified.
 
 For example (leaving out the categories):
 
@@ -89,8 +81,7 @@ For example (leaving out the categories):
     the other : the > other => .
     the other big dog : the other > big dog => .
 
-If the annotator wishes to leave an earlier occurrence 
-of a word or phrase unanalyzed, the double colon operator `::` can be used in the earlier occurrence:
+If the annotator wishes to leave an earlier occurrence of a word or phrase unanalyzed, the double colon operator `::` can be used in the earlier occurrence:
 
     that ice cream doesn't smell like ice cream
     
