@@ -39,7 +39,7 @@ First, a simple derivation without semantics:
     the dog bit John : the dog bit > John  => S
 ~~~
 
-### Notation for this example: Alternative 1
+### Notation for this example
 
     the dog bit John
 
@@ -86,6 +86,25 @@ For example (leaving out the categories):
     the other : the > other => .
     the other big dog : the other > big dog => .
 
+~~~ ccg
+    the big dog smelled the other big dog
+    
+    the : .
+    big : .
+    dog : . 
+    smelled : .
+    the : .
+    other : .
+    big : .
+    dog : .
+    
+    big dog : big > dog => .
+    big dog : big > dog => .
+    the big dog : the > big dog => .
+    the other : the > other => .
+    the other big dog : the other > big dog => .
+~~~
+
 If the annotator wishes to leave an earlier occurrence of a word or phrase unanalyzed, the double colon operator `::` can be used in the earlier occurrence:
 
     that ice cream doesn't smell like ice cream
@@ -99,24 +118,6 @@ that ice cream doesn't smell like ice cream
 ice cream ::
 ice cream : N
 ~~~
-
-### Alternative 2
-
-A variant under consideration is:
-
-    the dog bit John
-
-    the : NP/N 
-    dog :  N 
-    bit : (S\NP)/NP
-    John : NP
-
-    the dog : NP/N > N => NP 
-            : NP T> => S/(S\NP)
-    the dog bit : S/(S\NP) B> (S\NP)/NP => S/NP 
-    the dog bit John : S/NP > NP => S
-
-The difference is that instead of repeating the words of the sentence in the syntactic part of the rule, the categories of the constituents are repeated. This also goes for unary rules.
 
 ### With semantics
 
@@ -133,15 +134,20 @@ Following lexical entries and rules with an additional spaced colon makes room f
                      :            T>       => S/(S\NP) : !p . !y. %x. dog'(x) && p(x,y)
     the dog bit      :    the dog B> bit   => S/NP : !y . %x. dog'(x) && bit'(x,y)
     the dog bit John : the dog bit > John  => S : %x. dog'(x) && bit'(x,John') 
+    
+~~~ ccg
+    the dog bit John
 
-<table style="text-align: center; border-collapse: separate; border-spacing: 5px 0px;">
-<tr><td colspan="4" style="border: none; border-bottom: solid 1px #000; position: relative;">S : ∃x. dog′(x) ∧ bit′(x,John′)<span style="position: absolute; bottom: -10px; right: -10px;">&gt;</span></td></tr>
-<tr><td colspan="3" style="border: none; border-bottom: solid 1px #000; position: relative;">S/NP : λy . ∃x. dog′(x) ∧ bit′(x,y)<span style="position: absolute; bottom: -10px; right: -20px;">B&gt;</span></td></tr>
-<tr><td colspan="2" style="border: none; border-bottom: solid 1px #000; position: relative;">S/(S\NP) : λp . λy. ∃x. dog′(x) ∧ p(x,y)<span style="position: absolute; bottom: -10px; right: -20px;">T&gt;</span></td></tr>
-<tr><td colspan="2" style="border: none; border-bottom: solid 1px #000; position: relative;">NP : ∃x. dog′(x)<span style="position: absolute; bottom: -10px; right: -10px;">&gt;</span></td></tr>
-<tr><td style="border: none; border-bottom: solid 1px #000; position: relative;">NP/N : λx. x</td><td style="border: none; border-bottom: solid 1px #000;">N : ∃x. dog′(x)</td><td style="border: none; border-bottom: solid 1px #000;">(S\NP)/NP : λx. λy. bit′(x,y)</td><td style="border: none; border-bottom: solid 1px #000;">NP : John′</td></tr>
-<tr><th style="border: none;">the</th><th style="border: none;">dog</th><th style="border: none;">bit</th><th style="border: none;">John</th></tr>
-</table>
+    the : NP/N  : !x. x
+    dog :  N : %x. dog'(x)
+    bit : (S\NP)/NP : !x. !y. bit'(x,y)
+    John : NP : John'
+
+    the dog          :         the > dog   => NP : %x. dog'(x)
+                     :            T>       => S/(S\NP) : !p . !y. %x. dog'(x) && p(x,y)
+    the dog bit      :    the dog B> bit   => S/NP : !y . %x. dog'(x) && bit'(x,y)
+    the dog bit John : the dog bit > John  => S : %x. dog'(x) && bit'(x,John') 
+~~~
 
 For viewing in a web browser, we can consider richer and interactive forms of rendering the derivation—e.g., showing semantics only on hover.
 
