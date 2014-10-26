@@ -19,8 +19,6 @@ A rendering engine will automatically convert ASCII or Unicode text in this nota
 
 Rationale: We plan to build collaborative documention of how CCG can be applied to various constructions. Documentation pages will be written in Markdown, a popular readable text markup language that can be rendered in HTML. Example CCG derivations within the Markdown will be rendered appropriately. (Others may wish to write converters to other formats, such as LaTeX.)
 
-WORK IN PROGRESS. SUBJECT TO CHANGE.
-
 ## Example
 
 First, a simple derivation without semantics:
@@ -63,7 +61,39 @@ Syntactic information follows the identifier, separated by a spaced colon (` : `
 
 For unary rules that are not lexical entries, the syntactic part of the rule omits constituent identifiers (because the constituent is clear from the first part of the rule). Where multiple rules apply to the same constituent (e.g., _the dog_ in the example), they are given in order on successive lines: the consituent identifier only appears on the first of these lines, but the colon is repeated on each line. Otherwise, there are no requirements for the ordering of lines.
 
-### Multiple occurrences of the same word or phrase
+### With semantics
+
+Following lexical entries and rules with an additional spaced colon makes room for semantics. Note that the notation offers ASCII shorthand for special symbols, including `!` for λ, `&&` for ∧, and `%` for ∃.
+
+    the dog bit John
+
+    the : NP/N  : !x. x
+    dog :  N : %x. dog'(x)
+    bit : (S\NP)/NP : !x. !y. bit'(x,y)
+    John : NP : John'
+
+    the dog          :         the > dog   => NP : %x. dog'(x)
+                     :            T>       => S/(S\NP) : !p . !y. %x. dog'(x) && p(x,y)
+    the dog bit      :    the dog B> bit   => S/NP : !y . %x. dog'(x) && bit'(x,y)
+    the dog bit John : the dog bit > John  => S : %x. dog'(x) && bit'(x,John') 
+    
+~~~ ccg
+    the dog bit John
+
+    the : NP/N  : !x. x
+    dog :  N : %x. dog'(x)
+    bit : (S\NP)/NP : !x. !y. bit'(x,y)
+    John : NP : John'
+
+    the dog          :         the > dog   => NP : %x. dog'(x)
+                     :            T>       => S/(S\NP) : !p . !y. %x. dog'(x) && p(x,y)
+    the dog bit      :    the dog B> bit   => S/NP : !y . %x. dog'(x) && bit'(x,y)
+    the dog bit John : the dog bit > John  => S : %x. dog'(x) && bit'(x,John') 
+~~~
+
+For viewing in a web browser, we can consider richer and interactive forms of rendering the derivation—e.g., showing semantics only on hover.
+
+## Multiple occurrences of the same word or phrase
 
 Because constituents are identified simply by their component words, if the sentence contains repeated words, there needs to be a way to tell which of them is being referred to in a particular derivation step. This is determined by aligning the order of the derivation steps to the sentence order: where a constituent definition has multiple possible matches in the sentence, it is taken to refer to the earliest (leftmost, in LTR scripts) match that is not already encompassed by a constituent. Binary derivation steps require their component constituents to be adjacent, thus eliminating ambiguity once the resulting constituent's span is identified.
 
@@ -118,38 +148,6 @@ that ice cream doesn't smell like ice cream
 ice cream ::
 ice cream : N
 ~~~
-
-### With semantics
-
-Following lexical entries and rules with an additional spaced colon makes room for semantics. Note that the notation offers ASCII shorthand for special symbols, including `!` for λ, `&&` for ∧, and `%` for ∃.
-
-    the dog bit John
-
-    the : NP/N  : !x. x
-    dog :  N : %x. dog'(x)
-    bit : (S\NP)/NP : !x. !y. bit'(x,y)
-    John : NP : John'
-
-    the dog          :         the > dog   => NP : %x. dog'(x)
-                     :            T>       => S/(S\NP) : !p . !y. %x. dog'(x) && p(x,y)
-    the dog bit      :    the dog B> bit   => S/NP : !y . %x. dog'(x) && bit'(x,y)
-    the dog bit John : the dog bit > John  => S : %x. dog'(x) && bit'(x,John') 
-    
-~~~ ccg
-    the dog bit John
-
-    the : NP/N  : !x. x
-    dog :  N : %x. dog'(x)
-    bit : (S\NP)/NP : !x. !y. bit'(x,y)
-    John : NP : John'
-
-    the dog          :         the > dog   => NP : %x. dog'(x)
-                     :            T>       => S/(S\NP) : !p . !y. %x. dog'(x) && p(x,y)
-    the dog bit      :    the dog B> bit   => S/NP : !y . %x. dog'(x) && bit'(x,y)
-    the dog bit John : the dog bit > John  => S : %x. dog'(x) && bit'(x,John') 
-~~~
-
-For viewing in a web browser, we can consider richer and interactive forms of rendering the derivation—e.g., showing semantics only on hover.
 
 ## Special notation in categories
 
