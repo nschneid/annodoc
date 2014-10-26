@@ -25,14 +25,19 @@ WORK IN PROGRESS. SUBJECT TO CHANGE.
 
 First, a simple derivation without semantics:
 
-<table style="text-align: center; border-collapse: separate; border-spacing: 5px 0px;">
-<tr><td colspan="4" style="border: none; border-bottom: solid 1px #000; position: relative;">S<span style="position: absolute; bottom: -10px; right: -10px;">&gt;</span></td></tr>
-<tr><td colspan="3" style="border: none; border-bottom: solid 1px #000; position: relative;">S/NP<span style="position: absolute; bottom: -10px; right: -20px;">B&gt;</span></td></tr>
-<tr><td colspan="2" style="border: none; border-bottom: solid 1px #000; position: relative;">S/(S\NP)<span style="position: absolute; bottom: -10px; right: -20px;">T&gt;</span></td></tr>
-<tr><td colspan="2" style="border: none; border-bottom: solid 1px #000; position: relative;">NP<span style="position: absolute; bottom: -10px; right: -10px;">&gt;</span></td></tr>
-<tr><td style="border: none; border-bottom: solid 1px #000; position: relative;">NP/N</td><td style="border: none; border-bottom: solid 1px #000;">N</td><td style="border: none; border-bottom: solid 1px #000;">(S\NP)/NP</td><td style="border: none; border-bottom: solid 1px #000;">NP</td></tr>
-<tr><th style="border: none;">the</th><th style="border: none;">dog</th><th style="border: none;">bit</th><th style="border: none;">John</th></tr>
-</table>
+~~~ ccg
+    the dog bit John
+
+    the : NP/N 
+    dog :  N
+    bit : (S\NP)/NP
+    John : NP
+
+    the dog          :         the > dog   => NP
+                     :            T>       => S/(S\NP)
+    the dog bit      :    the dog B> bit   => S/NP
+    the dog bit John : the dog bit > John  => S
+~~~
 
 ### Notation for this example: Alternative 1
 
