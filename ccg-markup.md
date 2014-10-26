@@ -83,9 +83,10 @@ For example (leaving out the categories):
     big : .
     dog : .
     
-    big dog : .
-    big dog : .
+    big dog : big > dog => .
+    big dog : big > dog => .
     the big dog : the > big dog => .
+    the other : the > other => .
     the other big dog : the other > big dog => .
 
 If the annotator wishes to leave an earlier occurrence 
