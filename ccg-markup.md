@@ -88,14 +88,12 @@ If the annotator wishes to leave an earlier occurrence of a word or phrase unana
     ice cream ::
     ice cream : N
 
-<br/>
+~~~ ccg
+that ice cream doesn't smell like ice cream
 
-    ~~~ ccg
-    that ice cream doesn't smell like ice cream
-    
-    ice cream ::
-    ice cream : N
-    ~~~
+ice cream ::
+ice cream : N
+~~~
 
 ### Alternative 2
 
