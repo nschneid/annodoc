@@ -10,9 +10,6 @@
     <title>CCG Markup Renderer</title>
     
 <script type="text/javascript">
-$(function () {
-	CCGMarkup.activate();
-})
 function renderAction() {
 	try {
 		// clear containers
@@ -21,15 +18,15 @@ function renderAction() {
 		
 		var markup = $('#sentence').val();
 		if ($('#chars').prop('checked')) {
-			markup = smartSymbols(markup);
+			markup = CCGMarkup.smartSymbols(markup);
 			if ($('#inputchars').prop('checked'))
 				$('#sentence').val(markup);
 		}
-		var parse = parseCCGMarkup(markup);
-		renderHTML(parse, $('#htmlvis + div'), $('input[name=wordsat]:checked', '#frmInput').val());
-		renderJSON(parse.toTree(), $('#json1 + p + pre'));
-		renderJSON(parse.toFlatList(), $('#json2 + p + pre'));
-		renderJSON(parse.toTable(), $('#json3 + p + pre'));
+		var parse = CCGMarkup.parseCCGMarkup(markup);
+		CCGMarkup.renderHTML(parse, $('#htmlvis + div'), $('input[name=wordsat]:checked', '#frmInput').val());
+		CCGMarkup.renderJSON(parse.toTree(), $('#json1 + p + pre'));
+		CCGMarkup.renderJSON(parse.toFlatList(), $('#json2 + p + pre'));
+		CCGMarkup.renderJSON(parse.toTable(), $('#json3 + p + pre'));
 		$('#output').show();
 	} catch (e) {
 		$('#error').text(e.message);
