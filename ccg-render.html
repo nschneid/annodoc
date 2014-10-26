@@ -13,7 +13,7 @@
 function renderAction() {
 	try {
 		// clear containers
-		$('#output h2 + div,#output h3 + pre').html('');
+		$('#output h2 + div,#output h3 + p + pre').html('');
 		$('#error').html('');
 		
 		var markup = $('#sentence').val();
@@ -24,9 +24,9 @@ function renderAction() {
 		}
 		var parse = parseCCGMarkup(markup);
 		renderHTML(parse, $('#htmlvis + div'), $('input[name=wordsat]:checked', '#frmInput').val());
-		renderJSON(parse.toTree(), $('#json1 + pre'));
-		renderJSON(parse.toFlatList(), $('#json2 + pre'));
-		renderJSON(parse.toTable(), $('#json3 + pre'));
+		renderJSON(parse.toTree(), $('#json1 + p + pre'));
+		renderJSON(parse.toFlatList(), $('#json2 + p + pre'));
+		renderJSON(parse.toTable(), $('#json3 + p + pre'));
 		$('#output').show();
 	} catch (e) {
 		$('#error').text(e.message);
@@ -86,7 +86,8 @@ a { color: #0ae; }
 <div id="intro">
 <h1>CCG Markup Renderer</h1>
 <p>This page produces an HTML-based display of a CCG derivation 
-specified with <a href="ccg-markup.html">CCG Markup</a>.</p>
+specified with <a href="ccg-markup.html">CCG Markup</a>. 
+It also provides machine-readable data structures in JSON.</p>
 <p>Caveat: This tool does not check the details of the derivation for well-formedness. 
 (E.g., it is not required to be a tree, 
 and no interpretation of the categories, semantics, or combinators is performed.)
@@ -132,9 +133,12 @@ the dog bit John : the dog bit > John  => S</textarea>
 	A constituent’s <tt>"name"</tt> is the substring of the sentence that it spans.
 	In the second and third alternatives, constituents refer to other constituents 
 	by index.</p>
-  	<h3 id="json1">Tree</h3><pre></pre>
-  	<h3 id="json2">Flat List</h3><pre></pre>
-  	<h3 id="json3">Table</h3><pre></pre>
+  	<h3 id="json1">Tree</h3><p>This captures constituency via nesting, forming a tree structure. 
+  	It should only be used if the derivation forms a full tree over the sentence.</p><pre></pre>
+  	<h3 id="json2">Flat List</h3><p>This structures the derivation as a list of constituents.
+  	They are ordered according to the input markup.</p><pre></pre>
+  	<h3 id="json3">Table</h3><p>This organizes the constituents into rows for rendering 
+  	in a table.</p><pre></pre>
   </div>
 </div>
 
