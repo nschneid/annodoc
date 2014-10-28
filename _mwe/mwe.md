@@ -7,7 +7,7 @@ title: Multiword Expressions
 
 <ul>
 {% for p in site.mwe %}
-  {% if p.title != page.title %}<li><a href="{{ p.url }}" class="doclabel">{{ p.title }}</a></li>{% endif %}
+  {% if p.title != page.title %}<li><a href="{{ site.baseurl }}{{ p.url }}" class="doclabel">{{ p.title }}</a></li>{% endif %}
 {% endfor %}
 </ul>
 
