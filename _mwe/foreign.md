@@ -10,8 +10,8 @@ Multiword expressions may be borrowed wholesale from another language. They tend
 
 ## Examples
 
-- et cetera
-- coup d'etat
-- deja vu
+- _et cetera_
+- _coup d'état_
+- _déjà vu_
 
 ## References
