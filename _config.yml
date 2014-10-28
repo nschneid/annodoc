@@ -27,6 +27,8 @@ issueurl: "https://github.com/nschneid/ccg-cxns/issues"
 
 collections:
   entity:
-    output: true
+    output: false
   relation:
+    output: false
+  mwe:
     output: true
