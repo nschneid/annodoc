@@ -3,6 +3,14 @@ layout: entry
 title: Multiword Expressions
 ---
 
+## Pages
+
+<ul>
+{% for p in site.mwe %}
+  <li><a href="{{ p.title }}.html" class="doclabel">{{ p.title }}</a></li>
+{% endfor %}
+</ul>
+
 ## Definition
 
 ## General issues to consider
