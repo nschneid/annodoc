@@ -14,7 +14,7 @@ This discusses idioms that lexicalize (at least) a verb and a complement noun. I
 
 - take a walk (swim, shower, break, ...): any eventive noun for a durative activity with one (non-denoted) participant. AmE. (TODO: check CU work on 'take' LVCs)
 - take a {picture,photo}
-- take s.t. for granted/take for granted s.t.: similar to a [VPC](Verb-Particle Constructions)?
+- take s.t. for granted/take for granted s.t.: similar to a [VPC](vpc.html)?
 
 ### _attention_ SVCs
 
