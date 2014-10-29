@@ -6,11 +6,7 @@ langs: en
 
 ## Overview
 
-This discusses idioms that lexicalize (at least) a verb and a complement noun.
-In the literature, various subcategories of VP idioms are known as 
-Verb-Noun Constructions (VNCs), Light Verb Constructions (LVCs), 
-Support Verb Constructions, and phrasal idioms.
-Such constructions possess varying degrees of fixedness/productivity.
+This discusses idioms that lexicalize (at least) a verb and a complement noun. In the literature, various subcategories of VP idioms are known as Verb-Noun Constructions (VNCs), Light Verb Constructions (LVCs), Support Verb Constructions, and phrasal idioms. Such constructions possess varying degrees of fixedness/productivity.
 
 ## Examples
 
