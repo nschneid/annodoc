@@ -15,7 +15,7 @@ This discusses idioms that lexicalize (at least) a verb and a complement noun. I
 - take a walk (swim, shower, break, ...): any eventive noun for a durative activity with one (non-denoted) participant. AmE. (TODO: check CU work on 'take' LVCs)
 - take a {picture,photo}
 
-## _attention_ LVCs
+### _attention_ SVCs
 
 - pay attention (to NP)
 - give one's attention to NP
