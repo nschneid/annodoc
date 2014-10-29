@@ -1,6 +1,6 @@
 ---
 layout: entry
-title: Adjective Phrase MWEs
+title: Nominal Compounds
 langs: en
 ---
 
