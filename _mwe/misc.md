@@ -1,6 +1,6 @@
 ---
 layout: entry
-title: Miscalleneous MWEs
+title: Miscellaneous MWEs
 langs: en
 ---
 
