@@ -10,5 +10,6 @@ langs: en
 
 - by and large
 - out of order [not functioning]
+- intransitive V+P: come about = ‘arise’ (cf. [VPCs](Verb-Particle Constructions), [PVs](Prepositional Verbs))
 
 ## References
