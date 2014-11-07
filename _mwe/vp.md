@@ -24,7 +24,7 @@ As a first step, let us consider the following two alternative simplifications:
 **Option 1** would produce analyses like:
 
 ~~~ ccg
-Nobody paid attention to me , so I took a bath .
+Nobody paid attention to me , so I took a long bath .
 
 Nobody : NP
 paid : ((S\NP)/PP)/NP[+evt]
@@ -54,7 +54,7 @@ If we are doing parsing, it may not matter too much if the grammar overgenerates
 **Option 2** would constrain LVCs to hard-coded lexical combinations:
 
 ~~~ ccg
-Nobody paid attention to me , so I took a bath .
+Nobody paid attention to me , so I took a long bath .
 
 Nobody : NP
 paid : ((S\NP)/PP)/NP[attention]
