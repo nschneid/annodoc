@@ -34,15 +34,17 @@ me : NP
 I : NP
 took : (S\NP)/NP[+evt]
 a : NP[+evt]/N[+evt]
+long : N[+evt]/N[+evt]
 bath : N[+evt]
 
 paid attention : paid > attention => (S\NP)/PP
 to me : to > me => PP
 paid attention to me : paid attention > to me => S\NP
 Nobody paid attention to me : Nobody < paid attention to me => S
-a bath : a > bath => NP[+evt]
-took a bath : took > a bath => S\NP
-I took a bath : I < took a bath => S
+long bath : long > bath => N[+evt]
+a long bath : a > long bath => NP[+evt]
+took a long bath : took > a long bath => S\NP
+I took a long bath : I < took a long bath => S
 ~~~
 
 where `[+evt]` marks the noun's potential to appear in an LVC. Determiners and adjectives would have to be designed so as to propagate this feature up to the full NP.
@@ -62,24 +64,26 @@ me : NP
 I : NP
 took : (S\NP)/NP[bath]
 a : NP/N
+long : N/N
 bath : N
 
 paid attention : paid > attention => (S\NP)/PP
 to me : to > me => PP
 paid attention to me : paid attention > to me => S\NP
 Nobody paid attention to me : Nobody < paid attention to me => S
-a bath : a > bath => NP
-took a bath : took > a bath => S\NP
-I took a bath : I < took a bath => S
+long bath : long > bath => N
+a long bath : a > long bath => NP
+took a long bath : took > a long bath => S\NP
+I took a long bath : I < took a long bath => S
 ~~~
 
-Option 2 is thus higher precision, lower recall.
+Option 2 would disallow _*paid a bath_ and _*made attention_. It is thus higher precision, lower recall.
 
 Both solutions assume there is a one-to-one correspondence between light verbs and eventive nouns. It does not consider, e.g., _I took a walk, then a nap_, or the [zeugmatic](http://en.wikipedia.org/wiki/Zeugma#Type_2) _??I took a picture, then a nap_.
 
-### How to make the LVC semantics equivalent to a full verb paraphrase?
+### How to make the LVC semantics equivalent to its heavy verb paraphrase?
 
-### 
+From a semantic parsing perspective, the value in treating LVCs specially is to reduce sparsity by assigning the same semantics to an LVC (_take a bath_) as to its paraphrase with a heavy verb (_bathe_).
 
 ## Further examples
 
