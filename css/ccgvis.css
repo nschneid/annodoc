@@ -2,7 +2,7 @@ table.visccg { text-align: center; margin: 20px auto;
 	border-collapse: separate; border-spacing: 30px 0px; }
 table.visccg td { position: relative; }
 table.visccg td:not(.constit) { font-weight: bold; color: #0ae /*#f70*/; } /* words */
-table.visccg td.constit { border: none; }
+table.visccg td.constit { border: none; white-space: nowrap; }
 table.visccg td.constit:hover { /*color: #f07;*/ background-color: #ff9; }
 table.visccg td.constit .sem { color: #f93; /*#6d9*/ /*#96c*/ } /* semantics */
 table.visccg.wordsbelow td.constit { border-bottom: solid 1px #aaa; }
