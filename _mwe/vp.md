@@ -85,6 +85,36 @@ Both solutions assume there is a one-to-one correspondence between light verbs a
 
 From a semantic parsing perspective, the value in treating LVCs specially is to reduce sparsity by assigning the same semantics to an LVC (_take a bath_) as to its paraphrase with a heavy verb (_bathe_).
 
+The simplest approach is for the light verb to simply take on the semantics of the NP. To actually reduce sparsity, the semantic predicate associated with the noun should match that of a heavy verb in the lexicon. In many cases this will be orthographically identical (_walk_, _nap_, _lecture_, etc.), but in some cases the noun will be different (_attention_ → _attend_, _bath_ → _bathe_, _decision_ → _decide_, _speech_ → _speak_, etc.). There are existing resources from which we can extract lists of these correspondences.
+
+As long as light verbs are distinguished from heavy verbs in the lexicon, this will work equally well for Options 1 and 2 above. Here is the Option 2 example with rough semantics added:
+
+~~~ ccg
+Nobody paid attention to me , so I took a long bath .
+
+Nobody : NP : nobody
+paid : ((S\NP)/PP)/NP[attention] : !x. x
+attention : NP : !x!y. attend(x,y)
+to : PP/NP : !x. x (??)
+me : NP : me
+I : NP : i
+took : (S\NP)/NP[bath] : !x . x
+a : NP/N
+long : N/N : !x!y. long(y(x))
+bath : N : !x. bathe(x)
+
+paid attention : paid > attention => (S\NP)/PP : !x!y. attend(x,y)
+to me : to > me => PP : me
+paid attention to me : paid attention > to me => S\NP : !x. attend(x,me)
+Nobody paid attention to me : Nobody < paid attention to me => S : attend(nobody,me)
+long bath : long > bath => N : !x. long(bathe(x))
+a long bath : a > long bath => NP : !x. long(bathe(x))
+took a long bath : took > a long bath => S\NP : !x. long(bathe(x))
+I took a long bath : I < took a long bath => S : long(bathe(i))
+~~~
+
+The non-eventive entry for _bath_ will not have any arguments, so it will not work semantically with _take_.
+
 ## Further examples
 
 ### _take_ LVCs
