@@ -98,7 +98,7 @@ attention : NP : !x!y. attend(x,y)
 to : PP/NP : !x. x (??)
 me : NP : me
 I : NP : i
-took : (S\NP)/NP[bath] : !x . x
+took : (S\NP)/NP[bath] : !x. x
 a : NP/N
 long : N/N : !x!y. long(y(x))
 bath : N : !x. bathe(x)
