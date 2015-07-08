@@ -57,7 +57,7 @@ If we are doing parsing, it may not matter too much if the grammar overgenerates
 Nobody paid attention to me , so I took a long bath .
 
 Nobody : NP
-paid : ((S\NP)/PP)/NP[attention]
+paid : ((S\NP)/PP[to])/NP[attention]
 attention : NP
 to : PP/NP
 me : NP
@@ -67,7 +67,7 @@ a : NP/N
 long : N/N
 bath : N
 
-paid attention : paid > attention => (S\NP)/PP
+paid attention : paid > attention => (S\NP)/PP[to]
 to me : to > me => PP
 paid attention to me : paid attention > to me => S\NP
 Nobody paid attention to me : Nobody < paid attention to me => S
@@ -77,7 +77,7 @@ took a long bath : took > a long bath => S\NP
 I took a long bath : I < took a long bath => S
 ~~~
 
-Option 2 would disallow _*paid a bath_ and _*made attention_. It is thus higher precision, lower recall.
+Option 2 would disallow _*paid attention of me_, _*paid a bath_, and _*made attention_. It is thus higher precision, lower recall.
 
 Both solutions assume there is a one-to-one correspondence between light verbs and eventive nouns. It does not consider, e.g., _I took a walk, then a nap_, or the [zeugmatic](http://en.wikipedia.org/wiki/Zeugma#Type_2) _??I took a picture, then a nap_.
 
@@ -103,7 +103,7 @@ a : NP/N
 long : N/N : λf1,x. f1(x) ∧ long(x)
 bath : N : λx. [x=bathe]
 
-paid attention : paid > attention => (S\NP)/PP : λf2,f0,x. ∃y,z. [x=attend] ∧ f2(y) ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
+paid attention : paid > attention => (S\NP)/PP[to] : λf2,f0,x. ∃y,z. [x=attend] ∧ f2(y) ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
 to me : to > me => PP : λy. [y=me]
 paid attention to me : paid attention > to me => S\NP : λf0,x. ∃y,z. [x=attend] ∧ [y=me] ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
 Nobody paid attention to me : Nobody < paid attention to me => S : λx. ∃y,z. [x=attend] ∧ [y=me] ∧ [z=nobody] ∧ arg1(x_e, z) ∧ arg2(x_e, y)
