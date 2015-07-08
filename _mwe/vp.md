@@ -87,33 +87,38 @@ From a semantic parsing perspective, the value in treating LVCs specially is to 
 
 The simplest approach is for the light verb to simply take on the semantics of the NP. To actually reduce sparsity, the semantic predicate associated with the noun should match that of a heavy verb in the lexicon. In many cases this will be orthographically identical (_walk_, _nap_, _lecture_, etc.), but in some cases the noun will be different (_attention_ → _attend_, _bath_ → _bathe_, _decision_ → _decide_, _speech_ → _speak_, etc.). There are existing resources from which we can extract lists of these correspondences.
 
-As long as light verbs are distinguished from heavy verbs in the lexicon, this will work equally well for Options 1 and 2 above. Here is the Option 2 example with rough semantics added:
+As long as light verbs are distinguished from heavy verbs in the lexicon, this will work equally well for Options 1 and 2 above. Here is the Option 2 example with [GraphParser](https://github.com/sivareddyg/graph-parser)-style logical forms suggested by Siva:
 
 ~~~ ccg
 Nobody paid attention to me , so I took a long bath .
 
-Nobody : NP : nobody
-paid : ((S\NP)/PP)/NP[attention] : !x. x
-attention : NP : !x!y. attend(x,y)
-to : PP/NP : !x. x (??)
-me : NP : me
-I : NP : i
-took : (S\NP)/NP[bath] : !x. x
+Nobody : NP : λz. [z=nobody]
+paid : ((S\NP)/PP[to])/NP[attention] : λf1,f2,f0,x. ∃y,z. f1(x) ∧ f2(y) ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
+attention : NP : λx. [x=attend]
+to : PP/NP : λf1,x. f1(x)
+me : NP : λy. [y=me]
+I : NP : λy. [y=i]
+took : (S\NP)/NP[bath] : λf1,f0,x. ∃y. f1(x) ∧ f0(y) ∧ arg1(x_e, y)
 a : NP/N
-long : N/N : !x!y. long(y(x))
-bath : N : !x. bathe(x)
+long : N/N : λf1,x. f1(x) ∧ long(x)
+bath : N : λx. [x=bathe]
 
-paid attention : paid > attention => (S\NP)/PP : !x!y. attend(x,y)
-to me : to > me => PP : me
-paid attention to me : paid attention > to me => S\NP : !x. attend(x,me)
-Nobody paid attention to me : Nobody < paid attention to me => S : attend(nobody,me)
-long bath : long > bath => N : !x. long(bathe(x))
-a long bath : a > long bath => NP : !x. long(bathe(x))
-took a long bath : took > a long bath => S\NP : !x. long(bathe(x))
-I took a long bath : I < took a long bath => S : long(bathe(i))
+paid attention : paid > attention => (S\NP)/PP : λf2,f0,x. ∃y,z. [x=attend] ∧ f2(y) ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
+to me : to > me => PP : λy. [y=me]
+paid attention to me : paid attention > to me => S\NP : λf0,x. ∃y,z. [x=attend] ∧ [y=me] ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
+Nobody paid attention to me : Nobody < paid attention to me => S : λx. ∃y,z. [x=attend] ∧ [y=me] ∧ [z=nobody] ∧ arg1(x_e, z) ∧ arg2(x_e, y)
+long bath : long > bath => N : λx. [x=bathe] ∧ long(x)
+a long bath : a > long bath => NP : λx. [x=bathe] ∧ long(x)
+took a long bath : took > a long bath => S\NP : λf0,x. ∃y. [x=bathe] ∧ long(x) ∧ f0(y) ∧ arg1(x_e, y)
+I took a long bath : I < took a long bath => S : λx. ∃y. [x=bathe] ∧ long(x) ∧ [y=i] ∧ arg1(x_e, y)
 ~~~
 
-The non-eventive entry for _bath_ will not have any arguments, so it will not work semantically with _take_.
+A few notes about the above:
+
+  1. The semantics is neo-Davidsonian: in the logical form, event-participant relations are denoted with predicates `arg1(evt, argfiller)`, `arg2(evt, argfiller)`, etc.
+  2. `x_e` indicates the event reading of an instance whose variable is `x`. The non-eventive sense of _bath_ will not permit this coercion, so it will not work semantically with _take_.
+  3. N and NP categories are typed as functions that take an instance variable as an argument. This is a trick that GraphParser uses to postpone issues of quantification. The notation `[x=bathe]` means that `x` denotes an instance of bathing. 
+  4. In the ultimate logical form, there is a single argument—the instance of the head predicate. Entities mentioned in the logical form are introduced with existential quantifiers.
 
 ## Further examples
 
