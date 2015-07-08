@@ -116,7 +116,7 @@ I took a long bath : I < took a long bath => S : λx. ∃y. [x=bathe] ∧ long(x
 A few notes about the above:
 
   1. The semantics is neo-Davidsonian: in the logical form, event-participant relations are denoted with predicates `arg1(evt, argfiller)`, `arg2(evt, argfiller)`, etc.
-  2. `x_e` indicates the event reading of an instance whose variable is `x`. The non-eventive sense of _bath_ will not permit this coercion, so it will not work semantically with _take_.
+  2. `x_e` indicates the event reading of an instance whose variable is `x`. The non-eventive sense of _bath_ will not permit this coercion, so it will not work semantically with light verb _take_.
   3. N and NP categories are typed as functions that take an instance variable as an argument. This is a trick that GraphParser uses to postpone issues of quantification. The notation `[x=bathe]` means that `x` denotes an instance of bathing. 
   4. In the ultimate logical form, there is a single argument—the instance of the head predicate. Entities mentioned in the logical form are introduced with existential quantifiers.
 
