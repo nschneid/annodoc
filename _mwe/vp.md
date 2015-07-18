@@ -120,6 +120,29 @@ A few notes about the above:
   3. N and NP categories are typed as functions that take an instance variable as an argument. This is a trick that GraphParser uses to postpone issues of quantification. The notation `[x=bathe]` means that `x` denotes an instance of bathing. 
   4. In the ultimate logical form, there is a single argument—the instance of the head predicate. Entities mentioned in the logical form are introduced with existential quantifiers.
 
+TODO: Ensure the formulation works for syntactic constructions such as passive and cluster coordination:
+
+~~~ ccg
+give Sam a handshake and Alice a high-five
+
+give : (VP/NP)/NP : λf1,f2,f0,x. ∃y,z. f1(x) ∧ f2(y) ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)
+Sam   : NP : λx. [x=Sam]
+      : <T => (VP/NP)\((VP/NP)/NP) : λu. u(λx. [x=Sam])
+a handshake : NP : λy. [y=shake-hands-with]
+            : <T => VP\(VP/NP)     : λv. v(λy. [y=shake-hands-with])
+and : CONJ
+Alice : NP : λx. [x=Alice]
+      : <T => (VP/NP)\((VP/NP)/NP)
+a high-five : NP : λy. [y=high-five]
+            : <T => VP\(VP/NP)
+
+Sam a handshake   :  Sam <B a handshake   => VP\((VP/NP)/NP) : λz. (z(λx. [x=Sam]))(λy. [y=shake-hands-with])
+Alice a high-five :  Alice <B a high-five => VP\((VP/NP)/NP) : λz. (z(λx. [x=Alice]))(λy. [y=high-five])
+and Alice a high-five : and <&> Alice a high-five => VP\((VP/NP)/NP)
+Sam a handshake and Alice a high-five : Sam a handshake <&> and Alice a high-five => VP\((VP/NP)/NP) : λz. (z(λx. [x=Sam]))(λy. [y=shake-hands-with]) ∧ (z(λx. [x=Alice]))(λy. [y=high-five])
+give Sam a handshake and Alice a high-five : give < Sam a handshake and Alice a high-five => VP : λf0,x. (∃y,z. [x=Sam] ∧ [y=shake-hands-with] ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y)) ∧ (∃y,z. [x=Alice] ∧ [y=high-five] ∧ f0(z) ∧ arg1(x_e, z) ∧ arg2(x_e, y))
+~~~
+
 ## Further examples
 
 ### _take_ LVCs
